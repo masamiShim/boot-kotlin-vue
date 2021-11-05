@@ -3,9 +3,14 @@
 ## 1. とりあえずローカル起動
 
 1. ローカルDBの準備
-2. `./gradlew npmCi` (npm ci)
-3. `./gradlew webpackDev` (npm webpack --watch / Vueファイルのビルドと配置)
-4. `./gradlew bootRun` (SpringBootの起動)
+2. resources以下のapplication-local.default.ymlをコピーしてapplication-local.ymlへリネーム
+3. ローカルの接続情報を設定
+   1. `url: jdbc:mysql://ホスト名:ポート/DB名`
+   2. username
+   3. password
+4. `./gradlew npmCi` (npm ci)
+5. `./gradlew webpackDev` (npm webpack --watch / Vueファイルのビルドと配置)
+6. `./gradlew bootRun` (SpringBootの起動)
 
 ※ ./gradlewを使うとgradleをローカルインストールする必要なしです。
 
