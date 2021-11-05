@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<!--/* (1) */-->
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layout/app :: layout(~{::title},~{::body/content()})}">
+<head>
+    <!--/* (2) */-->
+    <title>Create Staff Information</title>
+</head>
+<body>
+<h2>Create Staff Information</h2>
+<div id="sample">
+    <dh-table th:v-bind:items="${@vc.toJson(users)}"></dh-table>
+</div>
+<table>
+    <thead>
+    <tr>
+        <th class="border-right">head1</th>
+        <th>head2</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>content1</td>
+        <td>content2</td>
+    </tr>
+    </tbody>
+</table>
+<nav class="paginate-container" aria-label="Pagination">
+    <div class="pagination">
+        <span class="previous_page" aria-disabled="true">Previous</span>
+        <em aria-current="page">1</em>
+        <a href="#" aria-label="Page 2">2</a>
+        <a href="#" aria-label="Page 3">3</a>
+        <span class="gap">…</span>
+        <a href="#" aria-label="Page 8">8</a>
+        <a href="#" aria-label="Page 9">9</a>
+        <a href="#" aria-label="Page 10">10</a>
+        <a class="next_page" rel="next" href="#" aria-label="Next Page">Next</a>
+    </div>
+</nav>
+<!-- 各画面で同一ファイルとなるためブラウザーキャッシュが効く -->
+<script src="/js/vendor.bundle.js" th:src="@{/js/vendor.bundle.js}"></script>
+<!-- 各画面の .js がバンドルされた screen1.bundle.js -->
+<script src="/js/service.bundle.js" th:src="@{/js/service.bundle.js}"></script>
+</body>
+</html>

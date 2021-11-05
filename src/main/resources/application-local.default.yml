@@ -1,0 +1,32 @@
+# 各環境毎の設定
+spring:
+  thymeleaf:
+    # localではcache無効
+    cache: false
+  datasource:
+    # ローカルの接続情報
+    url:
+    username:
+    password:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  # devtoolsを有効
+  devtools:
+    livereload:
+      enabled: true
+
+# ポートとか変えたければ
+server:
+  port: 8090
+  address: localhost
+
+# ログ出したいところあれば
+logging:
+  level:
+    org:
+      springframework: WARN
+    com:
+      # sqlログ
+      example:
+        kotlin_template:
+          mapper: DEBUG
+

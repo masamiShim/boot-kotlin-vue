@@ -1,0 +1,18 @@
+{
+  "files": [
+    "shims-vue.d.ts"
+  ],
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "CommonJS",
+    "noImplicitAny": true,
+    "noEmit": false
+  },
+  "include": [
+    "src/main/client/js/**/*.ts",
+    "src/main/client/js/**/*.vue"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

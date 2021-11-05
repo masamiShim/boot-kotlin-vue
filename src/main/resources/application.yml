@@ -1,0 +1,8 @@
+spring:
+  # NODE_ENVみたいなもの
+  profiles:
+    active: local
+    group:
+      local:
+        - common
+        - local
