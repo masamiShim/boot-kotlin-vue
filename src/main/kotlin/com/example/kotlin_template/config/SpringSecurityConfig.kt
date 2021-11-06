@@ -36,7 +36,7 @@ class SpringSecurityConfig(private val userDetailsService: MyUserDetailService) 
             .loginPage("/auth/login")
             // ログイン後のURL指定
             // TODO: alwaysUseについては調べる
-            .defaultSuccessUrl("/service", true)
+            .defaultSuccessUrl("/service/dashboard", true)
             .and()
             // ログアウト設定
             .logout()

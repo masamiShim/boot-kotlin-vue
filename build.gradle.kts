@@ -53,7 +53,7 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-thymeleaf:2.5.6")
     implementation("org.springframework.boot:spring-boot-starter-web:2.5.6")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.13.0")
-    implementation("org.flywaydb:flyway-core:8.0.2")
+    implementation("org.flywaydb:flyway-core")
     // mysql
     implementation("mysql:mysql-connector-java:8.0.26")
     implementation("org.jetbrains.kotlin:kotlin-reflect")

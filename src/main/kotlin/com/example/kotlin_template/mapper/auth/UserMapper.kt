@@ -33,6 +33,9 @@ interface UserMapper {
     @org.apache.ibatis.annotations.SelectProvider(type = SelectProvider::class, method = "paginate")
     fun paginate(condition: PaginateFetchCondition): List<User>
 
+    @org.apache.ibatis.annotations.SelectProvider(type = SelectProvider::class, method = "total")
+    fun total(condition: PaginateFetchCondition): Int
+
     data class PaginateFetchCondition(
         val current: Int,
         val perPage: Int
@@ -53,6 +56,13 @@ interface UserMapper {
                     .FROM("users")
                     .OFFSET(((current - 1) * perPage).toLong())
                     .LIMIT(perPage)
+                    .toString()
+            }
+
+            @JvmStatic
+            fun total(condition: PaginateFetchCondition): String = condition.run {
+                SQL().SELECT("count(*)")
+                    .FROM("users")
                     .toString()
             }
         }
