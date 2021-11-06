@@ -1,8 +1,8 @@
-const webpack = require('webpack')
 const path = require('path')
-const { VueLoaderPlugin } = require('vue-loader')
+const {VueLoaderPlugin} = require('vue-loader')
 // cssをjsにバンドルしない
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const ESLintPlugin = require('eslint-webpack-plugin');
 
 module.exports = () => {
     // TODO: 環境毎で使い分けたい
@@ -59,6 +59,12 @@ module.exports = () => {
             }
         },
         plugins: [
+            new ESLintPlugin({
+
+                extensions: ['.ts', '.js'],
+                exclude: ['node_modules', './src/main/static/js'],
+                fix: true
+            }),
             new VueLoaderPlugin(),
             new MiniCssExtractPlugin({
                 filename: 'css/[name].bundle.css'
@@ -91,7 +97,7 @@ module.exports = () => {
                             appendTsSuffixTo: [/\.vue$/]
                         }
                     }]
-                },                {
+                }, {
                     test: /\.(sa|c)ss$/,
                     use: [
                         // 各loaderは下から順に適用

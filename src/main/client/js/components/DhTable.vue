@@ -2,17 +2,26 @@
   <div>
     <table class="m-auto width-full">
       <thead>
-      <tr class="border-bottom color-bg-accent">
-
-        <th v-for="(h, idx) in header" :class="idx !== header.length ? 'border-right' : ''" :key="`header_${idx}`">
-          {{ h.name }}
-        </th>
-      </tr>
+        <tr class="border-bottom color-bg-accent">
+          <th
+            v-for="(h, idx) in header"
+            :class="idx !== header.length ? 'border-right' : ''"
+            :key="`header_${idx}`"
+          >
+            {{ h.name }}
+          </th>
+        </tr>
       </thead>
       <tbody>
-      <tr class="border-bottom" v-for="(item, idx)  in items" :key="`item_${idx}`">
-        <td class="width-fit border-right" v-for="h in header" :key="h.key">{{ item[h.key] }}</td>
-      </tr>
+        <tr
+          class="border-bottom"
+          v-for="(item, idx) in items"
+          :key="`item_${idx}`"
+        >
+          <td class="width-fit border-right" v-for="h in header" :key="h.key">
+            {{ item[h.key] }}
+          </td>
+        </tr>
       </tbody>
     </table>
   </div>
@@ -31,34 +40,31 @@
       </div>
     </nav>
   </div>
-
 </template>
 
 <script lang="ts">
-import {defineComponent} from "vue";
+import { defineComponent } from 'vue';
 
 export default defineComponent({
-  name: "DhTable",
+  name: 'DhTable',
   props: {
     // TODO: レスポンスの型をSpring側で生成するようにしたい
     items: {
       type: Array,
       required: true,
-    }
+    },
   },
-  setup(props) {
+  setup() {
     const header = [
-      {name: '#', key: 'id'},
-      {name: 'ログインID', key: 'loginId'},
-      {name: "ユーザID", key: 'userId'},
-      {name: "有効", key: 'accountNonExpired'},
-      {name: "ロック", key: 'accountNonLocked'},
-    ]
-    return {header}
-  }
-})
+      { name: '#', key: 'id' },
+      { name: 'ログインID', key: 'loginId' },
+      { name: 'ユーザID', key: 'userId' },
+      { name: '有効', key: 'accountNonExpired' },
+      { name: 'ロック', key: 'accountNonLocked' },
+    ];
+    return { header };
+  },
+});
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

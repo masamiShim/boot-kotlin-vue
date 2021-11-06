@@ -5,15 +5,22 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "npx eslint --fix ./src/main/client/js && npx prettier --write ./src/main/client/js",
     "webpack:dev": "webpack --watch --progress",
     "webpack:prod": "webpack --progress"
   },
   "devDependencies": {
     "@babel/core": "^7.16.0",
     "@babel/preset-env": "^7.16.0",
+    "@typescript-eslint/eslint-plugin": "^5.3.0",
+    "@typescript-eslint/parser": "^5.3.0",
     "@vue/compiler-sfc": "^3.2.21",
+    "@vue/eslint-config-typescript": "^9.0.1",
     "babel-loader": "^8.2.3",
     "css-loader": "^6.5.0",
+    "eslint": "^8.1.0",
+    "eslint-plugin-vue": "^8.0.3",
+    "eslint-webpack-plugin": "^3.1.0",
     "file-loader": "^6.2.0",
     "mini-css-extract-plugin": "^2.4.3",
     "sass": "^1.43.4",
@@ -24,7 +31,9 @@
     "webpack": "^5.61.0",
     "webpack-cli": "^4.9.1",
     "webpack-dev-server": "^4.4.0",
-    "webpack-merge": "^5.8.0"
+    "webpack-merge": "^5.8.0",
+    "prettier": "2.4.1",
+    "eslint-config-prettier": "8.3.0"
   },
   "dependencies": {
     "axios": "^0.24.0",

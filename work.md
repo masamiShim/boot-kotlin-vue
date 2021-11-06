@@ -40,8 +40,9 @@ declare module '*.vue' {
 ---
 
 ### MyBatis
-
-- sqlどうしよう問題
+[気をつけることがあるらしい1](https://qiita.com/5zm/items/e1faac61a1d00998fb1f)  
+[気をつけることがあるらしい2](https://qiita.com/5zm/items/0864d6641c65f976d415)
+- 複雑なsqlどうしよう問題
     - クラス定義で行けるらしいからこれにしようかな。。。
         - [〇〇Provider使うやつの参考](https://su-kun1899.hatenablog.com/entry/2018/07/27/210000)
 

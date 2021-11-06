@@ -8,8 +8,8 @@
    1. `url: jdbc:mysql://ホスト名:ポート/DB名`
    2. username
    3. password
-4. `./gradlew npmCi` (npm ci)
-5. `./gradlew webpackDev` (npm webpack --watch / Vueファイルのビルドと配置)
+4. `./gradlew npmInstall` (npm install)
+5. `./gradlew webpackDev` (npm ci && npm webpack --watch / Vueファイルのビルドと配置)
 6. `./gradlew bootRun` (SpringBootの起動)
 
 ※ ./gradlewを使うとgradleをローカルインストールする必要なしです。

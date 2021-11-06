@@ -33,13 +33,14 @@ noArg {
     annotation("com.example.kotlin_template.utils.NoArg")
 }
 
-// 3.1.1 node 14.15.4
-// 3.1.1 npm 6.14.10
 node {
+    node.version.set("16.13.0")
+    npmVersion.set("8.1.0")
     // グローバルじゃなくてローカルにダウンロードして使うように設定
     download.set(true)
 }
 
+// devtools用設定(IntellijIdea)
 idea {
     module {
         inheritOutputDirs = false
@@ -48,20 +49,20 @@ idea {
 }
 
 dependencies {
-    implementation("org.springframework.boot:spring-boot-starter-security")
-    implementation("org.springframework.boot:spring-boot-starter-thymeleaf")
-    implementation("org.springframework.boot:spring-boot-starter-web")
-    implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
-    implementation("org.flywaydb:flyway-core")
+    implementation("org.springframework.boot:spring-boot-starter-security:2.5.6")
+    implementation("org.springframework.boot:spring-boot-starter-thymeleaf:2.5.6")
+    implementation("org.springframework.boot:spring-boot-starter-web:2.5.6")
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.13.0")
+    implementation("org.flywaydb:flyway-core:8.0.2")
     // mysql
     implementation("mysql:mysql-connector-java:8.0.26")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
     implementation("org.mybatis.spring.boot:mybatis-spring-boot-starter:2.2.0")
-    implementation("org.thymeleaf.extras:thymeleaf-extras-springsecurity5")
-    developmentOnly("org.springframework.boot:spring-boot-devtools")
-    testImplementation("org.springframework.boot:spring-boot-starter-test")
-    testImplementation("org.springframework.security:spring-security-test")
+    implementation("org.thymeleaf.extras:thymeleaf-extras-springsecurity5:3.0.4.RELEASE")
+    developmentOnly("org.springframework.boot:spring-boot-devtools:2.5.5")
+    testImplementation("org.springframework.boot:spring-boot-starter-test:2.5.6")
+    testImplementation("org.springframework.security:spring-security-test:5.5.1")
 }
 
 tasks.withType<KotlinCompile> {
@@ -85,12 +86,20 @@ tasks.register<com.github.gradle.node.npm.task.NpmTask>("npmCi") {
     inputs.files("package.json", "package-lock.json")
     outputs.dir("node_modules")
 }
+
+tasks.register<com.github.gradle.node.npm.task.NpmTask>("npmLint") {
+    args.set(listOf("run", "lint"))
+}
+
 tasks.register<com.github.gradle.node.npm.task.NpmTask>("webpackProd") {
     dependsOn(tasks.getByName("npmCi"))
+    dependsOn(tasks.getByName("npmLint"))
     environment.set(mapOf("NODE_ENV" to "development"))
     args.set(listOf("run", "webpack:prod"))
 }
+
 tasks.register<com.github.gradle.node.npm.task.NpmTask>("webpackDev") {
+    dependsOn(tasks.getByName("npmLint"))
     environment.set(mapOf("NODE_ENV" to "development"))
     args.set(listOf("run", "webpack:dev"))
 }
